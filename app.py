@@ -4,8 +4,6 @@ from tkinter import simpledialog, messagebox
 from datetime import datetime
 import json
 import os
-import Image, ImageTk
-
 
 class StudyBuddyApp:
     
@@ -72,15 +70,7 @@ class StudyBuddyApp:
         self.clear_main_area()
         label = tk.Label(self.main_area, text="Welcome to StudyBuddy!\nSelect an option from the left.", font=("Helvetica", 16), bg="white")
         label.pack(pady=100)
-        try:
-            img = Image.open("studying.jpg")
-            img = img.resize((120, 120))
-            self.dashboard_photo = ImageTk.PhotoImage(img)
-
-            tk.Label(self.main_area, image=self.dashboard_photo, text="Welcome to StudyBuddy!", compound="top", font=("Helvetica", 14), bg="white").pack(pady=20)
-        except Exception as e:
-            tk.Label(self.main_area, text=f"Error loading dashboard image: {e}", bg="white").pack()
-
+       
     def show_tasks(self):
         self.clear_main_area()
 
@@ -182,22 +172,7 @@ class StudyBuddyApp:
     def show_timer(self):
         self.clear_main_area()
 
-        try:
-            img = Image.open("timer_img.png")
-            img = img.resize((100, 100))  # Resize as needed
-            self.timer_photo = ImageTk.PhotoImage(img)
-
-            tk.Label(
-                self.main_area,
-                image=self.timer_photo,
-                text="Stay Focused!",  # Acts as 'alt text'
-                compound="top",
-                font=("Helvetica", 14),
-                bg="white"
-            ).pack(pady=10)
-        except Exception as e:
-            tk.Label(self.main_area, text=f"Error loading timer image: {e}", bg="white").pack()
-
+        
 
         frame = tk.Frame(self.main_area, bg="white")
         frame.pack(expand=True)
@@ -213,7 +188,6 @@ class StudyBuddyApp:
         self.minutes_entry = tk.Entry(input_frame, width=5, font=("Helvetica", 12))
         self.minutes_entry.pack(side="left", padx=5)
         self.minutes_entry.insert(0, "25")  # default 25 minutes
-
     # Buttons
         btn_frame = tk.Frame(frame, bg="white")
         btn_frame.pack()
