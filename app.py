@@ -23,11 +23,11 @@ class StudyBuddyApp:
         self.load_tasks()
 
         # Sidebar frame
-        self.sidebar = tk.Frame(root, width=150, bg="#a3c1ad")
+        self.sidebar = tk.Frame(root, width=150, bg="#366897")
         self.sidebar.pack(side="left", fill="y")
 
         # Main content area
-        self.main_area = tk.Frame(root, bg="white")
+        self.main_area = tk.Frame(root, bg="grey")
         self.main_area.pack(side="right", fill="both", expand=True)
 
     
@@ -79,13 +79,13 @@ class StudyBuddyApp:
     def show_tasks(self):
         self.clear_main_area()
 
-        frame = tk.Frame(self.main_area, bg="white")
+        frame = tk.Frame(self.main_area, bg="grey")
         frame.pack(fill="both", expand=True, padx=20, pady=20)
 
-        label = tk.Label(frame, text="Tasks", font=("Helvetica", 16), bg="white")
+        label = tk.Label(frame, text="Tasks", font=("arial", 16), bg="white")
         label.pack()
 
-        self.task_listbox = tk.Listbox(frame, height=10, font=("Helvetica", 12))
+        self.task_listbox = tk.Listbox(frame, height=10, font=("arial", 12))
         self.task_listbox.pack(fill="x", pady=10)
 
         btn_frame = tk.Frame(frame, bg="white")
@@ -152,7 +152,7 @@ class StudyBuddyApp:
         try:
             datetime.strptime(due_date, "%Y-%m-%d")
         except Exception:
-            messagebox.showerror("Error", "Invalid date format.")
+            messagebox.showerror("Error", "Invalid date format please enter yyyy-mm-dd.")
             return
 
         self.tasks[index] = {"title": title, "category": category, "due_date": due_date}
@@ -179,18 +179,18 @@ class StudyBuddyApp:
 
         
 
-        frame = tk.Frame(self.main_area, bg="white")
+        frame = tk.Frame(self.main_area, bg="grey")
         frame.pack(expand=True)
 
     # Label for timer display
-        self.timer_label = tk.Label(frame, text="25:00", font=("Helvetica", 48), bg="white")
+        self.timer_label = tk.Label(frame, text="25:00", font=("arial", 48), bg="grey")
         self.timer_label.pack(pady=20)
 
     # Input for minutes
         input_frame = tk.Frame(frame, bg="white")
         input_frame.pack(pady=10)
-        tk.Label(input_frame, text="Set minutes:", bg="white", font=("Helvetica", 12)).pack(side="left")
-        self.minutes_entry = tk.Entry(input_frame, width=5, font=("Helvetica", 12))
+        tk.Label(input_frame, text="Set minutes:", bg="white", font=("arial", 12)).pack(side="left")
+        self.minutes_entry = tk.Entry(input_frame, width=5, font=("arial", 12))
         self.minutes_entry.pack(side="left", padx=5)
         self.minutes_entry.insert(0, "25")  # default 25 minutes
     # Buttons
@@ -222,7 +222,7 @@ class StudyBuddyApp:
             self.timer_id = self.root.after(1000, self.update_timer)
         elif self.timer_seconds == 0:
             self.timer_running = False
-            messagebox.showinfo("Time's up!", "Your study session has ended!")
+            messagebox.showinfo("Time's up!", "Your study has ended!")
 
     def start_timer(self):
         if not self.timer_running:
@@ -232,7 +232,7 @@ class StudyBuddyApp:
                 if minutes <= 0:
                     raise ValueError
             except ValueError:
-                messagebox.showerror("Invalid input", "Please enter a positive integer for minutes.")
+                messagebox.showerror("Invalid input", "Please enter a positive number for minutes.")
                 return
 
             self.timer_seconds = minutes * 60
@@ -267,7 +267,7 @@ class StudyBuddyApp:
     def show_calendar(self):
         self.clear_main_area()
 
-        frame = tk.Frame(self.main_area, bg="white")
+        frame = tk.Frame(self.main_area, bg="grey")
         frame.pack(padx=20, pady=20, fill="both", expand=True)
 
         today = datetime.now()
@@ -275,13 +275,13 @@ class StudyBuddyApp:
         month = today.month
 
     # Title: Month Year
-        title = tk.Label(frame, text=f"{calendar.month_name[month]} {year}", font=("Helvetica", 16), bg="white")
+        title = tk.Label(frame, text=f"{calendar.month_name[month]} {year}", font=("arial", 16), bg="white")
         title.grid(row=0, column=0, columnspan=7, pady=10)
 
     # Weekday headers
         days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         for i, day in enumerate(days):
-            tk.Label(frame, text=day, font=("Helvetica", 12, "bold"), bg="white").grid(row=1, column=i, padx=5, pady=5)
+            tk.Label(frame, text=day, font=("arial", 12, "bold"), bg="grey").grid(row=1, column=i, padx=5, pady=5)
 
     # Month calendar data (weeks x days)
         month_days = calendar.monthcalendar(year, month)
