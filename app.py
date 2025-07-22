@@ -36,12 +36,12 @@ class StudyBuddyApp:
                    ("Timer", self.show_timer),
                    ("Calendar", self.show_calendar),
         ]
-        exit_btn = tk.Button(self.sidebar, text="Exit", font=("arial", 12), bg="#red", command=self.exit_app)
+        exit_btn = tk.Button(self.sidebar, text="Exit", font=("arial", 12), bg="red", command=self.exit_app)
         exit_btn.pack(fill="x", pady=5, padx=5)
 
 
         for (text, command) in buttons:
-            btn = tk.Button(self.sidebar, text=text, command=command, font=("Helvetica", 12), bg="#d5e4d7")
+            btn = tk.Button(self.sidebar, text=text, command=command, font=("arial", 12), bg="#gray")
             btn.pack(fill="x", pady=5, padx=5)
 
         # Show welcome message initially
