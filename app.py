@@ -6,7 +6,9 @@ import json
 import os
 
 class StudyBuddyApp:
-    
+    def exit_app(self):
+        self.root.quit()
+
 
     def __init__(self, root):
         self.root = root
@@ -34,6 +36,9 @@ class StudyBuddyApp:
                    ("Timer", self.show_timer),
                    ("Calendar", self.show_calendar),
         ]
+        exit_btn = tk.Button(self.sidebar, text="Exit", font=("Helvetica", 12), bg="#f28b82", command=self.exit_app)
+        exit_btn.pack(fill="x", pady=5, padx=5)
+
 
         for (text, command) in buttons:
             btn = tk.Button(self.sidebar, text=text, command=command, font=("Helvetica", 12), bg="#d5e4d7")
