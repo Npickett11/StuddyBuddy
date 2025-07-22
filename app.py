@@ -34,6 +34,9 @@ class StudyBuddyApp:
                    ("Timer", self.show_timer),
                    ("Calendar", self.show_calendar),
         ]
+        exit_btn = tk.Button(self.sidebar, text="Exit", font=("Helvetica", 12), bg="#f28b82", command=self.exit_app) 
+        exit_btn.pack(fill="x", pady=5, padx=5)
+
 
         for (text, command) in buttons:
             btn = tk.Button(self.sidebar, text=text, command=command, font=("Helvetica", 12), bg="#d5e4d7")
@@ -288,16 +291,18 @@ class StudyBuddyApp:
             "Exam Prep": "#FFCC99",
             "Personal": "#99FF99"
         }
+    def exit_app(self):
+        self.root.quit()  # closes the app window
 
     # Callback when clicking a date
-        def on_date_click(day):
-            if day == 0:
-                return
-            date_str = f"{year}-{month:02d}-{day:02d}"
-            due_tasks = [t for t in self.tasks if t["due_date"] == date_str]
-            if not due_tasks:
-                messagebox.showinfo("Tasks", f"No tasks due on {date_str}")
-                return
+    def on_date_click(day):
+        if day == 0:
+            return
+        date_str = f"{year}-{month:02d}-{day:02d}"
+        due_tasks = [t for t in self.tasks if t["due_date"] == date_str]
+        if not due_tasks:
+            messagebox.showinfo("Tasks", f"No tasks due on {date_str}")
+            return
 
         # Show tasks in a popup
             msg = ""
