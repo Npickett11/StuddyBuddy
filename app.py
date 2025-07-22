@@ -305,10 +305,10 @@ class StudyBuddyApp:
             return
 
         # Show tasks in a popup
-            msg = ""
-            for t in due_tasks:
-                msg += f"{t['title']} [{t['category']}]\n"
-            messagebox.showinfo(f"Tasks due {date_str}", msg)
+        msg = ""
+        for t in due_tasks:
+            msg += f"{t['title']} [{t['category']}]\n"
+        messagebox.showinfo(f"Tasks due {date_str}", msg)
 
     # Create buttons for each day
         for week_num, week in enumerate(month_days):
