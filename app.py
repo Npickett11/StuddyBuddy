@@ -1,3 +1,9 @@
+#Nicholas Pickett
+#Final Project - StuddyBuddy
+#latest revision - 8/1/2025
+#purpose - To give the user tools to study more effectivly and keep track of ongoing tasks and their due date for better time managment.
+
+
 import tkinter as tk
 import calendar
 from tkinter import simpledialog, messagebox
@@ -75,7 +81,7 @@ class StudyBuddyApp:
         self.clear_main_area()
         label = tk.Label(self.main_area, text="Welcome to StudyBuddy!\nSelect an option from the left.", font=("Helvetica", 16), bg="white")
         label.pack(pady=100)
-       
+    #Tasks window
     def show_tasks(self):
         self.clear_main_area()
 
@@ -173,7 +179,7 @@ class StudyBuddyApp:
             self.refresh_task_list()
             self.save_tasks()
 
-
+#Timer Window
     def show_timer(self):
         self.clear_main_area()
 
