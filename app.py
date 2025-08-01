@@ -41,7 +41,7 @@ class StudyBuddyApp:
 
 
         for (text, command) in buttons:
-            btn = tk.Button(self.sidebar, text=text, command=command, font=("arial", 12), bg="#gray")
+            btn = tk.Button(self.sidebar, text=text, command=command, font=("arial", 12), bg="gray")
             btn.pack(fill="x", pady=5, padx=5)
 
         # Show welcome message initially
